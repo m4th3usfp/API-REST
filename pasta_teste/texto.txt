@@ -1,0 +1,29 @@
+ESSE TEXTO ABAIXO FOI INSERIDO DENTRO DO MYSQL,
+DENTRO DA TABELA, DENTRO DE "SELECOES"      
+
+INSERT INTO `bdcopa`.`selecoes` (`selecao`, `grupo`) VALUES ('Holanda', 'A');
+INSERT INTO `bdcopa`.`selecoes` (`selecao`, `grupo`) VALUES ('Senegal', 'A');
+INSERT INTO `bdcopa`.`selecoes` (`selecao`, `grupo`) VALUES ('Equador', 'A');
+INSERT INTO `bdcopa`.`selecoes` (`selecao`, `grupo`) VALUES ('Catar', 'A');
+
+
+
+
+ALTER TABLE `api_fake`.`pessoa` 
+CHANGE COLUMN `tipo` `tipo` VARCHAR(90) NOT NULL ,
+CHANGE COLUMN `id` `id` INT NOT NULL ;
+
+
+
+
+npm list -g --depth=0 (listar pacotes globais sem mostrar as dependencias)
+npm list --depth=0 (Listar Pacotes em um Projeto Específico)
+npm ls -g <package-name> (Procurar um Pacote Específico Globalmente (npm ls -g nodemon))
+npm ls <package-name> (Procurar um Pacote Específico em um Projeto)
+npm root -g (Se você deseja encontrar o diretório onde os pacotes globais são instalados)
+npm root (Diretório de Pacotes do Projeto Atual)
+
+
+
+
+
