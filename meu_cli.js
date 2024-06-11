@@ -43,12 +43,29 @@ function alterarArquivo(nomeArquivo, novoConteudo) {
 }
 
 function removerArquivo(nomeArquivo) {
-    fs.unlink(nomeArquivo, (err) => {
+    fs.lstat(nomeArquivo, (err, stats) => {
         if (err) {
-            console.error('Erro ao remover o arquivo:', err);
+            console.error('Erro ao acessar arquivo ou pasta', err)
             return;
         }
-        console.log(`Arquivo ${nomeArquivo} removido com sucesso.`);
+
+        if (stats.isDirectory()) {
+            fs.rm(nomeArquivo, { recursive: true, force: true }, err => {
+                if (err) {
+                    console.error('Erro ao excluir pasta:', err);
+                } else {
+                    console.log(`Pasta ${nomeArquivo}, excluida com sucesso!`)
+                }
+            })
+        } else {
+            fs.unlink(nomeArquivo, err => {
+                if (err) {
+                    console.error('Erro ao excluir arquivo.')
+                } else {
+                    console.log(`Arquivo ${nomeArquivo} excluido com sucesso!`)
+                }
+            });
+        }
     });
 }
 
@@ -59,7 +76,7 @@ function moverArquivo(nomeArquivo, destino) {
             return;
         }
         console.log(`Arquivo ${nomeArquivo} movido para ${destino} com sucesso.`);
-        
+
         // Verificar se o arquivo foi realmente movido
         if (fs.existsSync(destino)) {
             console.log(`Arquivo está agora em ${destino}.`);
@@ -88,8 +105,9 @@ function exibirAjuda() {
     console.log('node meu_cli.js alterar <nome_arquivo> <novo_conteudo>');
     console.log('node meu_cli.js renomear <nome_arquivo> <novo_nome>')
     console.log('node meu_cli.js remover <nome_arquivo>');
-    console.log('node meu_cli.js mover <nome_arquivo> <destino>');
+    console.log('node meu_cli.js mover <nome_arquivo> <destino> || se for pasta <nome_arquivo> <destino>/<nome_arquivo>');
     console.log('node meu_cli.js criarPasta <nome_pasta>');
+    console.log('node meu_cli.js exibircomandos')
 }
 
 if (process.argv.length < 4) {
@@ -127,13 +145,12 @@ if (comando === 'exibir') {
         process.exit(1);
     }
     if (fs.existsSync(nomeArquivo)) {
-        renomearArquivo(nomeArquivo, novoNome);
+        moverArquivo(nomeArquivo, novoNome);
     } else {
         console.error(`Erro ao renomear arquivo ${nomeArquivo}`);
         exibirAjuda();
     }
-}
- else if (comando === 'remover') {
+}   else if (comando === 'remover') {
     if (fs.existsSync(nomeArquivo)) {
         removerArquivo(nomeArquivo);
     } else {
@@ -150,4 +167,8 @@ if (comando === 'exibir') {
 } else {
     console.error('Comando inválido.');
     exibirAjuda();
+} 
+
+if (comando === 'exibircomandos') {
+    exibirAjuda()
 }
