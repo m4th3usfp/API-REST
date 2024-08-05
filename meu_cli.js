@@ -4,14 +4,15 @@ import path from 'path';
 function exibirlistadecomando() {
     console.log('Comandos disponíveis:')
     console.log('node meu_cli2.js help')
-    console.log('node meu_cli2.js exibir <nome arquivo>')
+    console.log('node meu_cli2.js exibir <nome_arquivo>')
     console.log('node meu_cli2.js criar <nome_arquivo> "conteúdo"')
+    console.log('node meu_cli2.js criarPasta <nome_pasta>')
     console.log('node meu_cli2.js alterar <nome_arquivo> "novo_conteudo"')
     console.log('node meu_cli2.js renomear <nome_arquivo> <novo_nome>')
     console.log('node meu_cli2.js remover <nome_arquivo>')
     console.log('node meu_cli2.js renomeararquivopasta <nome_arquivo> <novo_nome>')
     console.log('node meu_cli2.js mover <nome_arquivo> <destino> || (se for pasta) <nome_arquivo> <destino/nome_arquivo>')
-    console.log('node meu_cli2.js criarPasta <nome_pasta>')
+    console.log('node meu_cli2.js moverporextensao <diretório> <extensao>')
 }
 
 function exibirArquivo(nomeArquivo) {
@@ -51,7 +52,7 @@ function alterarArquivo(nomeArquivo, novoConteudo) {
         if (err) {
             console.error('Erro ao alterar arquivo.')
         } else {
-            console.log(`Arquivo ${nomeArquivo} alterado com sucesso!`)
+            console.log(`Arquivo ${nomeArquivo} alterado com sucesso!`, argumentosRestantes)
         }
     });
 }
@@ -94,7 +95,7 @@ function moverArquivo(nomeArquivo, destino) {
             console.log(`Arquivo ${nomeArquivo} movido para ${destino} com sucesso!`)
 
             if (fs.existsSync(destino)) {
-                console.log(`Arquivo esta agora em ${destino}.`)
+                console.log(`Arquivo ${nomeArquivo} esta agora em ${destino}.`, argumentosRestantes[1])
             } else {
                 console.error('Arquivo não encontrado no destino especificado.')
             }
@@ -138,16 +139,75 @@ async function renomeararquivopasta(nomePasta, nomeBase) {
     }
 }
 
+async function moverporextensao(dir, extensao) {
+    const verificarSePastaContemExtensao = (dir) => {
+        const files = fs.readdirSync(dir);
+        return files.some(file => {
+            const filePath = path.join(dir, file);
+            const stats = fs.statSync(filePath);
+            if (stats.isDirectory()) {
+                return verificarSePastaContemExtensao(filePath);
+            } else {
+                return path.extname(file) === extensao;
+            }
+        });
+    };
+
+    if (!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()) {
+        console.error(`A pasta ${dir} não existe ou não é um diretório.`);
+        return;
+    }
+
+    if (!verificarSePastaContemExtensao(dir)) {
+        console.error(`A pasta ${dir} não contém arquivos com a extensão ${extensao}.`);
+        return;
+    }
+
+    const moveFilesRecursive = (currentDir) => {
+        const files = fs.readdirSync(currentDir);
+        const arquivos_fixo = ['meu_cli2.js', 'node_modules', 'meu_cli.js', 'server.js','conexao.js','app.js']
+
+        for (const file of files) {
+            const filePath = path.join(currentDir, file);
+            const stats = fs.statSync(filePath);
+
+            if (arquivos_fixo.includes(file)) {
+                continue;
+            }
+
+            if (stats.isDirectory()) {
+                moveFilesRecursive(filePath);
+            } else {
+                if (path.extname(file) === extensao) {
+                    const novaPasta = path.join(dir, extensao.slice(1));
+                    if (!fs.existsSync(novaPasta)) {
+                        fs.mkdirSync(novaPasta);
+                    }
+                    const newFilePath = path.join(novaPasta, file);
+                    fs.renameSync(filePath, newFilePath);
+                }
+            }
+        }
+    };
+
+    moveFilesRecursive(dir);
+    console.log(`Arquivos com a extensão ${extensao} movidos para as respectivas subpastas.`);
+}
+
+if (process.argv.length === 3 && process.argv[2] === 'help') {
+    exibirlistadecomando();
+    process.exit(0)
+}
 
 if (process.argv.length < 4) {
     console.error('Numero insuficiente de argumentos');
     exibirlistadecomando();
     process.exit(1);
-}
+} 
 
 const comando = process.argv[2];
 const nomeArquivo = process.argv[3];
-const argumentosRestantes = process.argv.slice(4)
+const argumentosRestantes = process.argv.slice(3)
 
 
 if (comando === 'exibir') {
@@ -163,7 +223,7 @@ if (comando === 'exibir') {
     criarPasta(nomeArquivo);
 } else if (comando === 'alterar') {
     if (fs.existsSync(nomeArquivo)) {
-        alterarArquivo(nomeArquivo, argumentosRestantes.join(' '));
+        alterarArquivo(nomeArquivo, argumentosRestantes[1]);
     } else {
         console.error(`O arquivo ${nomeArquivo} não existe.`);
         exibirlistadecomando();
@@ -189,9 +249,9 @@ if (comando === 'exibir') {
         exibirlistadecomando();
     }
 } else if (comando === 'mover') {
-    const destino = argumentosRestantes[0];
+    const destino = argumentosRestantes[1];
     if (!destino) {
-        console.error('Destino não especificado.');
+        console.error('Destino não especificado.', argumentosRestantes);
         exibirlistadecomando();
         process.exit(1);
     }
@@ -209,13 +269,21 @@ if (comando === 'exibir') {
         console.error(`A pasta ${nomeArquivo} não existe ou não é uma pasta.`);
         exibirlistadecomando();
     }
-} else {
-    console.error('Comando inválido.');
-    exibirlistadecomando();
-} 
+} if (comando === 'moverporextensao') {
+    // Antes de verificar os argumentos
+    console.log('Argumentos Restantes:', argumentosRestantes);
 
-if (comando === 'help') {
-    exibirlistadecomando()
+    const dir = argumentosRestantes[0];
+    const extensao = argumentosRestantes[1];
+
+    if (!dir || !extensao) {
+        console.error('Nome da pasta ou extensão não especificados.');
+        exibirlistadecomando();
+        process.exit(1);
+    }
+
+    console.log('Diretório:', dir);
+    console.log('Extensão:', extensao);
+
+    moverporextensao(dir, extensao);
 }
- // comentario so pra testar uma coisa 
- 
