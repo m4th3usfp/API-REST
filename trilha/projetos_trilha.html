@@ -184,7 +184,32 @@
     </h3>
 
     <div class="bg-warning rounded-2 d-inline-block px-3 py-2 mb-4 ms-4">
-        <h4><strong>Projeto #3.2 exercícios DOM ( JavaScript )</strong></h4>
+        <h4><strong>Projeto #3.2 Leitura de CodeBases ( JavaScript )</strong></h4>
+    </div>
+
+    <div class="container-fluid">
+        <span class="mb-3 fs-3 ms-3 link-dark fst-italic d-flex">
+            <i class="bi bi-asterisk fs-4 me-2"></i> O objetivo desse projeto é te trazer familiaridade com os comandos
+            Javascript
+            e como eles são estruturados em um site real.
+        </span>
+        <span class="d-block fs-3 ms-3 ms-5 link-dark fst-italic">
+            Para isso, você deverá baixar o seguinte
+            <a href="https://github.com/irmaos-dev/codebases" class="link-dark fst-italic ms-1">
+                repositorio
+            </a>
+            que contém os seguintes projetos: <strong>calculadora, jogo da memória, jogo da velha, truco e
+                jokenpo</strong>.
+            Execute os projetos em seu computador e leia todos seus arquivos.
+        </span>
+
+    </div>
+    <h3 class="text-muted shadow-sm">
+        ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+    </h3>
+
+    <div class="bg-warning rounded-2 d-inline-block px-3 py-2 mb-4 ms-4">
+        <h4><strong>Projeto #3.3 exercícios DOM ( JavaScript )</strong></h4>
     </div>
 
     <div class="container-fluid">
@@ -211,23 +236,37 @@
         <h4><strong>Projeto #4.1 Front End com Thunder Client </strong></h4>
     </div>
 
-    <div class="container-fluid">
-        <span class="mb-3 fs-3 ms-3 link-dark fst-italic d-block">
-            <i class="bi bi-asterisk fs-4"></i> Interação com <a href="https://crudcrud.com/"
-                class="link-dark fst-italic ms-1">CrudCrud</a> <strong>usando Thunder Client</strong>.
-        </span>
-        <span class="d-block fs-3 ms-3 ms-5 link-dark fst-italic">
-            O objetivo da primeira atividade é ambientar com o uso de uma API Client,
-            um software especializado em interagir com APIs.
-            O uso do Thunder Client é indicado por ser uma extensão do VSCode, nosso ambiente de desenvolvimento
-            escolhido.
-        </span>
-        <span class="d-block mb-3 fs-3 ms-5 link-dark fst-italic">
-            Pegue o link disponibilizado em <a href="https://crudcrud.com/"
-                class="link-dark fst-italic ms-1">crudcrud.com</a>
-            e faça um total de 6 requisições HTTP, sempre na rota <br> "/pessoas"
-        </span>
+    <span class="mb-3 fs-3 ms-3 link-dark fst-italic d-flex">
+        <i class="bi bi-asterisk fs-4 me-2"></i> Em todas as atividades desta etapa você usará o serviço gratuito
+        CrudCrud,
+        que é uma API conveniente na criação de aplicações de teste ou protótipos.
+    </span>
+    <span class="mb-3 fs-3 ms-3 link-dark fst-italic d-block">
+        <i class="bi bi-asterisk fs-4"></i> Interação com <a href="https://crudcrud.com/"
+            class="link-dark fst-italic ms-1">CrudCrud</a> <strong>usando Thunder Client</strong>.
+    </span>
+    <span class="d-block fs-3 ms-3 ms-5 link-dark fst-italic">
+        O objetivo da primeira atividade é ambientar com o uso de uma API Client,
+        um software especializado em interagir com APIs.
+        O uso do Thunder Client é indicado por ser uma extensão do VSCode, nosso ambiente de desenvolvimento
+        escolhido.
+    </span>
+    <span class="d-block mb-3 fs-3 ms-5 link-dark fst-italic">
+        Pegue o link disponibilizado em <a href="https://crudcrud.com/"
+            class="link-dark fst-italic ms-1">crudcrud.com</a>
+        e faça um total de 6 requisições HTTP, sempre na rota <br> "/pessoas"
+    </span>
+    <ul class="list-group list-group-flush col-12 ms-3">
+        <li class="list-group-item-secondary fst-italic fs-4 ms-5"> Liste todos os registros.</li>
+        <li class="list-group-item-secondary fst-italic fs-4 ms-5"> Adicione um registro contendo o nome de uma pessoa.
+        </li>
+        <li class="list-group-item-secondary fst-italic fs-4 ms-5"> Exiba exclusivamente o registro alterado.</li>
+        <li class="list-group-item-secondary fst-italic fs-4 ms-5"> Altere o nome do registro.</li>
+        <li class="list-group-item-secondary fst-italic fs-4 ms-5"> Liste todos os registros.</li>
+        <li class="list-group-item-secondary fst-italic fs-4 ms-5"> Delete o registro.</li>
+    </ul>
     </div>
+
     <h3 class="text-muted shadow-sm">
         ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
     </h3>
@@ -249,6 +288,7 @@
             Você pode fazer de qualquer forma no Javascript: em uma página,
             no playground ou mesmo diretamente no console do DevTools.
         </span>
+
     </div>
     <h3 class="text-muted shadow-sm">
         ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -263,10 +303,69 @@
             <i class="bi bi-asterisk fs-4"></i> Interações com o <a href="https://crudcrud.com/"
                 class="link-dark fst-italic ms-1">CrudCrud</a> <strong>usando JavaScript</strong>.
         </span>
-        <span class="d-block fs-3 ms-5 link-dark fst-italic">
+        <span class="d-block fs-3 ms-5 link-dark fst-italic mb-3">
             Agora finalmente crie uma página completa, que envie requisições para o link disponibilizado pelo
             <a href="https://crudcrud.com/" class="link-dark fst-italic ms-1">crudcrud.com</a> na rota "/pessoas"
             e trate as respostas recebida do servidor.
+        </span>
+
+        <ul class="list-group list-group-flush col-12 ms-3">
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> um campo para colocar o link do CrudCrud que:
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> ao perder o foco (blur) envia uma requisição de
+                listar todas as pessoas e:</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> caso registros existam, criar a tabela descrita
+                a
+                baixo.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> caso nenhum registro exista, exibir a mensagem:
+                "Nenhuma pessoa cadastrada.".</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> um botão para adicionar pessoas.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> uma modal que aparece ao clicar nesse botão.
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> um formulário para inserir a pessoa dentro da
+                modal contendo:</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> text para o Nome e Email.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> radio button para o Tipo: Cliente, Fornecedor ou
+                Empregado, que:</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> deve mapear estes tipos para 1, 2 e 3.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> botão para cancelar que fecha a modal.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> botão para inserir a pessoa que faz:</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> valida se todos os campos estão preenchidos.
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> valida se é um email válido.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> envia a requisição para criar a pessoa.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> exibe a mensagem de sucesso ou erro.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> uma tabela que lista todas as pessoas
+                cadastradas e que contém:</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> o nome de cada coluna (Nome, Email e Tipo).</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> os dados de cada pessoa em cada linha, onde.
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> tipo deve ser exibido por extenso, em vez de 1,
+                2 e 3.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> um botão de deletar que abre um diálogo de
+                confirmação que faz ao confirmar:</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> envia a requisição de deletar.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> exibe a mensagem de sucesso ou erro.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> um botão de editar que abre uma modal que:</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> conteḿ um formulário de edição, similar ao
+                inserir.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> os campos devem estarem preenchidos com os
+                valores da pessoa correspondente.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> um botão de cancelar que fecha a modal.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> um botão de confirmar a edição que: </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> realiza as mesmas verificações que a inserção.
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> enviar a requisição de editar.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> exibe mensagem de sucesso ou erro.</li>
+        </ul>
+        <span class="d-block fs-3 ms-5 link-dark fst-italic mb-3 mt-3">
+            Como os dados são salvos no <a href="https://crudcrud.com/" class="link-dark fst-italic ms-1">CrudCrud</a>,
+            recarregar a página ou fechar e abrir novamente deve exibir os dados
+            atuais.
+        </span>
+        <span class="d-block fs-3 ms-5 link-dark fst-italic mb-3 mt-3">
+            Atenção! Você possui apenas 100 requisições diárias. Sua aplicação ficará indisponível ao atingir este
+            limite.
         </span>
         <span class="d-block mb-3 fs-3 ms-5 link-dark fst-italic">
             Confira essa página como exemplo =>
@@ -295,6 +394,26 @@
             O Playwright é uma ferramenta que simula o uso real de uma página web utilizando um navegador. <br>
             Com ela, você acessa páginas, clica em botões, lê textos e valores e mais.
         </span>
+        <span class="d-block fs-3 ms-5 link-dark fst-italic mt-3">
+            Faça um código para o Playwright interagir com a sua página criada no projeto anterior. Ela deve pegar um
+            link do CrudCrud,
+            preencher no seu site e garantir o sucesso de cada operações possíveis e
+            também garantir que operações inválidas não funcionem.
+        </span>
+        <span class="d-block fs-3 ms-5 link-dark fst-italic mt-3">
+            Exemplos de casos de testes:
+        </span>
+        <ul class="list-group list-group-flush col-12 ms-3">
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> adicionar uma pessoa e verificar se os dados da
+                pessoa
+                estão sendo apresentados corretamente na tabela.
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> remover a pessoa criada e verificar que não
+                aparece
+                mais na tabela.</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> tentar adicionar uma pessoa sem seus dados
+                e garantir que seja exibido um erro.</li>
+        </ul>
     </div>
     <h3 class="text-muted shadow-sm ">
         ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -312,15 +431,40 @@
             Neste projeto, você deverá exibir, criar, alterar, remover e mover arquivos do seu sistema.
             Além disso, seu código deverá ser capaz de receber argumentos pela linha de comando.
         </span>
+        <ul class="list-group list-group-flush col-12 ms-3 mt-3">
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> node meu_cli.js exibir meu_arquivo_teste.txt
+                O conteúdo do arquivo deve aparecer integralmente na tela.
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> node meu_cli.js criar meu_arquivo_teste.txt "Meu
+                texto a ser gravado no arquivo"
+                Deve criar um arquivo com o nome passado no segundo argumento (meu_arquivo_teste.txt)
+                e contendo o texto que foi passado como terceiro argumento ("Meu texto a ser gravado no arquivo").</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5"> node meu_cli.js alterar meu_arquivo_teste.txt
+                "Mudei o texto aqui" Deve alterar o arquivo de nome passado no segundo argumento
+                (meu_arquivo_teste.txt) para que seu conteúdo
+                seja o texto que foi passado como terceiro argumento ("Mudei o texto aqui").
+            </li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5">node meu_cli.js remover meu_arquivo_teste.txt
+                Deve deletar o arquivo de nome passado no segundo argumento (meu_arquivo_teste.txt)</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5">node meu_cli.js mover meu_arquivo_teste.txt
+                C:/pasta_destino/meu_arquivo_teste.txt
+                Deve mover o arquivo de nome passado no segundo argumento (meu_arquivo_teste.txt) para o caminho passado
+                no terceiro argumento (C:/pasta_destino/meu_arquivo_teste.txt)</li>
+            <li class="list-group-item-secondary fst-italic fs-4 ms-5">node meu_cli.js OU node meu_cli.js help
+                Deve exibir a lista de comandos possíveis e uma descrição de como usá-los.</li>
+        </ul>
         <span class="d-block fs-3 ms-5 link-dark fst-italic mt-3">
             Você deve validar todos os parâmetros, de forma que ao passar parâmetros inválidos,
             seu programa deverá exibir uma mensagem de erro e exibir a lista de comandos e suas instruções de uso.
         </span>
-        <span class="d-block fs-3 ms-5 link-dark fst-italic mt-3">
+        <span class="d-block fs-3 ms-5 link-dark fst-italic mt-3 ">
             Uma outra ideia é fazer o programa renomear todos os arquivos de uma pasta conforme um dado critério.
             Ou ainda, agrupar os arquivos em diferentes pastas conforme sua extensão.
         </span>
     </div>
+
+
+
     <h3 class="text-muted shadow-sm ">
         ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
     </h3>
@@ -531,22 +675,5 @@
         </span>
     </div>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
